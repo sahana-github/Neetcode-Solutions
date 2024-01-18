@@ -1,4 +1,18 @@
+
+''' In object-oriented programming, a factory method is a creational design pattern that provides an interface for creating objects without specifying the exact class of the object that will be created. Think of it as a factory that produces different types of products (objects) based on your request, but you don't need to know the intricate details of how each product is made.
+
+Here are the key elements of a factory method:
+
+Factory class: This class contains a factory method, which is responsible for creating and returning objects.
+Factory method: This method usually takes some input, such as a type identifier or configuration settings, and uses this information to determine which specific class to create. It then instantiates the chosen class and returns the new object.
+Product classes: These are the different classes of objects that can be created by the factory method.
+Benefits of using a factory method:
+
+Loose coupling: The code that uses the factory method doesn't need to know the specific classes of the objects being created. This makes the code more flexible and easier to maintain, as you can add new product classes without changing the code that uses them.
+Open/closed principle: The factory method is open for extension (you can add new product classes) but closed for modification (you don't need to change the existing code).
+Centralized object creation: By creating all objects through a factory method, you can encapsulate the logic for choosing and creating objects in one place. This makes it easier to manage and control how objects are created.'''
 #Factory Method Pattern
+
 class Vehicle(ABC):
     @abstractmethod
     def getType(self) -> str:
