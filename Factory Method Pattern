@@ -24,16 +24,11 @@ class VehicleFactory(ABC):
 class CarFactory(VehicleFactory):
     def createVehicle(self) -> Vehicle:
         return Car()
-    # Write your code here
 
 class BikeFactory(VehicleFactory):
     def createVehicle(self) -> Vehicle:
-    # Write your code here
-    
         return Bike()
 
 class TruckFactory(VehicleFactory):
     def createVehicle(self) -> Vehicle:
-    # Write your code here
-    
         return Truck()
