@@ -1,0 +1,36 @@
+import random
+def get_user_choice():
+    user_input=input("Enter your choice (rock, paper, scissors): ").lower()
+    while user_input not in ["rock","paper","scissors"]:
+        print("Invalid Choice. Please enter rock, paper or scissors: ")
+        user_input=input("Enter your choice (rock, paper, scissors): ").lower()
+    return user_input
+def get_computer_choice():
+    return random.choice(["rock","paper","scissors"])
+def determine_winner(user,computer):
+    if user==computer:
+        return "Its a draw!"
+    elif user=="rock" and computer=="paper":
+        return "Computer wins!"
+    elif user=="paper" and computer=="rock":
+        return "You win!"
+    elif user=="rock" and computer=="scissors":
+        return "You win!"
+    elif user=="scissors" and computer=="rock":
+        return "Computer win!"
+    elif user=="scissors" and computer=="paper":
+        return "You win!"
+    elif user=="paper" and computer=="scissors":
+        return "Computer win!"
+def main():
+    print("Welcome to Rock, Paper, Scissors!")
+
+    user_choice=get_user_choice()
+    computer_choice=get_computer_choice()
+
+    print(f"You chose: {user_choice}")
+    print(f"Computer chose : {computer_choice}")
+    result=determine_winner(user_choice,computer_choice)
+    print(result)
+if __name__=="__main__":
+    main()
