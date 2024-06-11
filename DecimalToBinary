@@ -1,0 +1,51 @@
+#include <iostream>
+#include <cmath> // Use cmath for pow() function
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter a decimal number: ";
+    cin >> n;
+
+    int ans = 0;
+    int i = 0;
+    while (n != 0) {
+        int bit = n & 1; // Extract the last bit
+        ans = (bit * pow(10, i)) + ans; // Place the bit in the correct position
+        n = n >> 1; // Shift right to process the next bit
+        i++;
+    }
+
+    cout << "The binary representation is " << ans << endl;
+    return 0;
+}
+// Step-by-Step Conversion
+
+//     First Iteration:
+//         n = 13
+//         bit = n & 1 → bit = 13 & 1 → bit = 1 (since the binary representation of 13 is 1101, and the last bit is 1)
+//         ans = (bit * pow(10, i)) + ans → ans = (1 * pow(10, 0)) + 0 → ans = 1
+//         n = n >> 1 → n = 13 >> 1 → n = 6 (shifting 13 right by one bit results in 110, which is 6 in decimal)
+//         i = i + 1 → i = 1
+
+//     Second Iteration:
+//         n = 6
+//         bit = n & 1 → bit = 6 & 1 → bit = 0 (since the binary representation of 6 is 110, and the last bit is 0)
+//         ans = (bit * pow(10, i)) + ans → ans = (0 * pow(10, 1)) + 1 → ans = 1 (no change since the bit is 0)
+//         n = n >> 1 → n = 6 >> 1 → n = 3 (shifting 6 right by one bit results in 11, which is 3 in decimal)
+//         i = i + 1 → i = 2
+
+//     Third Iteration:
+//         n = 3
+//         bit = n & 1 → bit = 3 & 1 → bit = 1 (since the binary representation of 3 is 11, and the last bit is 1)
+//         ans = (bit * pow(10, i)) + ans → ans = (1 * pow(10, 2)) + 1 → ans = 100 + 1 → ans = 101
+//         n = n >> 1 → n = 3 >> 1 → n = 1 (shifting 3 right by one bit results in 1, which is 1 in decimal)
+//         i = i + 1 → i = 3
+
+//     Fourth Iteration:
+//         n = 1
+//         bit = n & 1 → bit = 1 & 1 → bit = 1 (since the binary representation of 1 is 1, and the last bit is 1)
+//         ans = (bit * pow(10, i)) + ans → ans = (1 * pow(10, 3)) + 101 → ans = 1000 + 101 → ans = 1101
+//         n = n >> 1 → n = 1 >> 1 → n = 0 (shifting 1 right by one bit results in 0)
+//         i = i + 1 → i = 4
