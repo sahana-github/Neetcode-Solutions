@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath> // for pow() function
+
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter a binary number: ";
+    cin >> n;
+
+    int ans = 0, i = 0;
+
+    while (n != 0) {
+        int digit = n % 10; // Get the last digit
+        if (digit == 1) {
+            ans += pow(2, i); // Add the corresponding power of 2 if digit is 1
+        }
+        n = n / 10; // Remove the last digit
+        i++; // Move to the next position
+    }
+
+    cout << "The decimal value is " << ans << endl;
+
+    return 0;
+}
+// How the Process Works:
+
+// Consider the binary number 1101:
+
+//     First Iteration:
+//         n = 1101
+//         digit = n % 10 → digit = 1
+//         Since digit == 1, add 2^0 to ans → ans = 1
+//         Remove the last digit: n = n / 10 → n = 110
+
+//     Second Iteration:
+//         n = 110
+//         digit = n % 10 → digit = 0
+//         Since digit == 0, do nothing to ans
+//         Remove the last digit: n = n / 10 → n = 11
+
+//     Third Iteration:
+//         n = 11
+//         digit = n % 10 → digit = 1
+//         Since digit == 1, add 2^2 to ans → ans = 1 + 4 = 5
+//         Remove the last digit: n = n / 10 → n = 1
+
+//     Fourth Iteration:
+//         n = 1
+//         digit = n % 10 → digit = 1
+//         Since digit == 1, add 2^3 to ans → ans = 5 + 8 = 13
+//         Remove the last digit: n = n / 10 → n = 0
+
+//At the end of these iterations, ans will hold the decimal equivalent of the binary number 1101, which is 13.
